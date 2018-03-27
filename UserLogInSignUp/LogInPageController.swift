@@ -1,10 +1,4 @@
-//
-//  LogInPageController.swift
-//  UserLogInSignUp
-//
-//  Created by Appinventiv mac on 23/03/18.
-//  Copyright © 2018 Appinventiv mac. All rights reserved.
-//
+
 
 import UIKit
 
@@ -20,6 +14,12 @@ class LogInPageController: UIViewController {
     @IBOutlet weak var orLabel: UILabel!
     
     
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+       
+    }
+    
     @IBAction func logInButton(_ sender: UIButton) {
         let userEmail = emailTextField.text
         let userPassword = passwordTextField.text
@@ -34,7 +34,10 @@ class LogInPageController: UIViewController {
                 UserDefaults.standard.string(forKey: "IsUserLoggedIn")
                 UserDefaults.standard.synchronize()
                 
-                self.dismiss(animated: true,completion : nil)
+               
+//
+                 let svc = self.storyboard?.instantiateViewController(withIdentifier: "mainView") as! HomeController
+                self.navigationController?.pushViewController(svc, animated: true)
             }
         }
         else{
@@ -45,7 +48,7 @@ class LogInPageController: UIViewController {
         UserDefaults.standard.synchronize()
     }
     func  myAlertMessage(usermessage : String)  {
-        var myAlert = UIAlertController(title: "Alert", message:usermessage, preferredStyle: UIAlertControllerStyle.alert)
+        let myAlert = UIAlertController(title: "Alert", message:usermessage, preferredStyle: UIAlertControllerStyle.alert)
         let okAction =  UIAlertAction(title: "OK",style : UIAlertActionStyle.default,handler:nil)
         myAlert.addAction(okAction)
         self.present(myAlert,animated : true,completion:nil)

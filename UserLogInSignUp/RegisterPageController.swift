@@ -1,10 +1,4 @@
-//
-//  RegisterPageController.swift
-//  UserLogInSignUp
-//
-//  Created by Appinventiv mac on 23/03/18.
-//  Copyright © 2018 Appinventiv mac. All rights reserved.
-//
+
 
 import UIKit
 
@@ -20,6 +14,11 @@ class RegisterPageController: UIViewController {
     @IBOutlet weak var confirmPasswordLabel: UILabel!
     @IBOutlet weak var confirmPasswordField: UITextField!
    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+      
+    }
+
     @IBAction func registerButton(_ sender: UIButton) {
      let userEmail = emailField.text
         let userPassword = passwordField.text
@@ -46,7 +45,7 @@ class RegisterPageController: UIViewController {
         myAlertMessage(usermessage: "Register SuccessFully!!")
     }
     func  myAlertMessage(usermessage : String)  {
-        var myAlert = UIAlertController(title: "Alert", message:usermessage, preferredStyle: UIAlertControllerStyle.alert)
+        let myAlert = UIAlertController(title: "Alert", message:usermessage, preferredStyle: UIAlertControllerStyle.alert)
         let okAction =  UIAlertAction(title: "OK",style : UIAlertActionStyle.default,handler:nil)
         myAlert.addAction(okAction)
         self.present(myAlert,animated : true,completion:nil)
